@@ -1,0 +1,70 @@
+defaults:
+  - base_config    
+  - override data: t5_clap    # change here for loading different text features in training/evaluation
+  - override hydra/job_logging: custom  
+  - _self_             
+
+hydra:
+  run:
+    dir: ./exps/${exp_id}  
+  output_subdir: train-${now:%Y-%m-%d_%H-%M-%S}-hydra
+
+ema: 
+  start: 0
+
+mini_train: False
+example_train: False
+enable_grad_scaler: True
+ac_oversample_rate: 5
+
+log_text_interval: 50
+log_extra_interval: 10_000
+val_interval: 20_000
+eval_interval: 20_000
+save_eval_interval: 10_000
+save_weights_interval: 5_000
+save_checkpoint_interval: 10_000
+save_copy_iterations: []
+save_weights_copy_interval: 0  # if >0, saves iter-numbered weights every N iters (for watcher-based eval)
+grad_accum_steps: 1           # gradient accumulation steps (effective batch = batch_size * grad_accum_steps)
+
+batch_size: 128
+eval_batch_size: 4 
+
+num_iterations: 100_000
+learning_rate: 1e-4
+linear_warmup_steps: 1_000
+
+lr_schedule: step
+lr_schedule_steps: [40_000, 45_000]  # this is not used, lr_schedule_steps will be determined by the number of iterations
+lr_schedule_gamma: 0.1
+
+clip_grad_norm: 1.0
+weight_decay: 1.0e-6
+
+output_name: null   # for eval
+
+use_meanflow: True
+use_repa: False
+use_fd: False
+
+fd:
+  enable: false
+  encoders: [panns, passt]
+  ref_stats_paths:
+    panns: sets/fd_ref_stats_panns.pt
+    passt: sets/fd_ref_stats_passt.pt
+    vggish: sets/fd_ref_stats_vggish.pt
+    clap: sets/fd_ref_stats_clap.pt
+    passt_hier: sets/fd_ref_stats_passt_hier.pt
+    passt_dev: sets/fd_ref_stats_passt_dev.pt
+    passt_cls: sets/fd_ref_stats_passt_cls.pt
+    passt_patch: sets/fd_ref_stats_passt_patch.pt
+    passt_trans: sets/fd_ref_stats_passt_trans.pt
+    beats: sets/fd_ref_stats_beats.pt
+    audiomae: sets/fd_ref_stats_audiomae.pt
+  queue_size: 50000
+  weights: [1.0, 1.0]
+  norm_eps: 0.01
+  ema_beta: 0.0
+  mf_weight: 0.0

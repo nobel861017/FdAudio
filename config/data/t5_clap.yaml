@@ -1,0 +1,58 @@
+# AudioCaps 
+AudioCaps_npz: 
+  tag: train
+  tsv: data/audiocaps/train-memmap.tsv
+  npz_dir: data/audiocaps/train-npz-t5-clap
+  output_subdir: null
+  repa_npz_dir: null
+
+AudioCaps_val_npz: 
+  tag: val
+  tsv: data/audiocaps/val-memmap.tsv
+  npz_dir: data/audiocaps/val-npz-t5-clap
+  output_subdir: null
+  repa_npz_dir: null
+  gt_cache: data/audiocaps/val-features
+
+AudioCaps_test_npz: 
+  tag: test
+  tsv: data/audiocaps/test-memmap.tsv
+  npz_dir: data/audiocaps/test-npz-t5-clap
+  output_subdir: null
+  repa_npz_dir: null
+  gt_cache: data/audiocaps/test-features
+
+latent_mean: 'sets/latent_mean.pt'
+latent_std: 'sets/latent_std.pt'
+
+# Clotho
+Clotho_npz:
+  tsv: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/clotho/dev-memmap-t5-clap.tsv
+  npz_dir: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/clotho/dev-npz-t5-clap
+  repa_npz_dir: null
+
+# WavCaps 
+AudioSetSL_npz: 
+  tsv: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/wavcaps/audioset-sl-memmap-t5-clap.tsv
+  npz_dir: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/wavcaps/audioset-sl-npz-t5-clap
+  repa_npz_dir: null
+
+BBCSound_npz: 
+  tsv: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/wavcaps/bbc-sound-effects-memmap-t5-clap.tsv
+  npz_dir: /hpc_stor03/sjtu_home/xiquan.li/data/MMAudio/wavcaps/bbc-sound-effects-npz-t5-clap
+  repa_npz_dir: null
+
+FreeSound1_npz:
+  tsv: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-memmap-t5-clap-1.tsv
+  npz_dir: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-npz-t5-clap-1
+  repa_npz_dir: null
+
+FreeSound2_npz:
+  tsv: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-memmap-t5-clap-2.tsv
+  npz_dir: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-npz-t5-clap-2
+  repa_npz_dir: null
+
+FreeSound3_npz:
+  tsv: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-memmap-t5-clap-3.tsv
+  npz_dir: /hpc_stor03/sjtu_home/junxi.liu/shared/freesound-npz-t5-clap-3
+  repa_npz_dir: null

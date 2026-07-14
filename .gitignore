@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.DS_Store
+**/.DS_Store
+exps/
+output/
+eval_out/
+weights/
+data/memmap/
+data/audio-latents/
+*.pth
+*.pt
+*.flac
+*.wav
+*.npy
